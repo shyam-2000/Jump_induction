@@ -1,0 +1,22 @@
+from_database:
+  location: shyam_onboard
+  sql:
+    query : |
+            SELECT *
+            FROM daily_revenue_table     
+
+schema:
+  fields:
+    BusinessDate:
+      type: timestamp[s]
+    Sales:
+      type: double
+    Invoices:
+      type: int64
+
+to_database:
+  location: shyam_onboard
+  sql:
+    if_exists: replace
+    table: daily_sales
+    

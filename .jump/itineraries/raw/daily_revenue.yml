@@ -1,0 +1,30 @@
+partitions:
+  temporal:
+    start_date: "2023-01-01"
+    time_unit: daily
+
+schedules:
+  timezone: Europe/Rome
+  fixed:
+    cron: '15 17 * * *'
+
+inputs:
+  raw/orders:
+    from_database: 
+      validation: false
+
+compute:
+  steps:
+    - add_timezone_to_date:
+        sql:
+           query: |
+              SELECT
+                 * EXCLUDE("transaction_date")
+                ,ARROW_CAST("transaction_date", 'Timestamp(Microsecond, Some("UTC"))') AS "transaction_date"
+              FROM "raw/orders:from_database"
+
+outputs:
+  raw/orders:
+    to_database: 
+       validation : true
+      

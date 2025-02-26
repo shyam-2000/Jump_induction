@@ -1,0 +1,8 @@
+from_api_key:
+    location: shyam_onboard
+    api:
+      request:
+        path: "https://hitalk.free.beeceptor.com/meteo"
+      
+
+to_database:        

@@ -1,0 +1,41 @@
+schema:
+  fields:
+    transaction_date:
+      type: timestamp[s]
+    daily_revenue:
+      type: double
+    total_quantity:
+      type: int64
+    product_id :  
+      type: int64
+
+
+from_database:
+  location: shyam_onboard
+  sql:
+    query: |
+      SELECT
+            COUNT(product_id) AS product_id,
+            DATE(timestamp) AS transaction_date,
+            sum(price * quantity) AS daily_revenue,
+            sum(quantity) AS total_quantity       
+      FROM transactions
+      WHERE DATE(timestamp) = '{{ run.yesterday }}'
+      GROUP BY transaction_date
+      ORDER BY transaction_date 
+      
+
+to_database:
+  location: shyam_onboard
+  sql:
+    if_exists: replace
+    table: daily_revenue_table
+
+     
+
+
+ 
+
+
+ 
+

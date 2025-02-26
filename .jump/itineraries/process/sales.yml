@@ -1,0 +1,23 @@
+inputs:
+  processed/accumulation: 
+    from_database: 
+      validation: false
+      
+
+compute:
+  steps:
+    - stock_code_stats:
+        sql:
+          query: |
+            SELECT 
+                first_value(transaction_date) AS BusinessDate
+              , array_agg(product_id) AS Invoices
+              , sum(daily_revenue) AS Sales   
+            FROM "processed/accumulation:from_database"
+                      
+           
+outputs:
+  processed/accumulation:
+    to_database: 
+       validation: true
+

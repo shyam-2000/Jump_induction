@@ -1,0 +1,4 @@
+raw/orders:
+  to_database:
+    itineraries:
+      - process/sales
