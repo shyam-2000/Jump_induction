@@ -1,7 +1,7 @@
 schema:
   fields:
     transaction_date:
-      type: timestamp[s]
+      type: date64
     daily_revenue:
       type: double
 

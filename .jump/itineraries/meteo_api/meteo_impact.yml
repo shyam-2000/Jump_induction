@@ -1,0 +1,21 @@
+inputs:
+  meteo/weather:
+    from_api_key: {} 
+  raw/orders:
+    from_database: {}  
+     
+
+compute:
+  steps:
+    - add_weather_to_revenue:
+        sql:
+           query: |
+              SELECT transaction_date, daily_revenue
+              FROM  daily_revenue_table
+              RIGHT JOIN "meteo/weather:from_api_key"
+              ON "transaction_date" = "date"
+
+outputs:
+  meteo/weather:
+    to_database: {}
+       

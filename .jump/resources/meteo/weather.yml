@@ -1,0 +1,19 @@
+schema:
+  fields:
+    date:
+      type: date64
+    weather:
+      type: str
+
+from_api_key:
+    location: shyam_onboard
+    api:
+      request:
+        path: "https://hitalk.free.beeceptor.com/meteo"
+      
+
+to_database:
+  location: shyam_onboard
+  sql:
+    if_exists: replace
+    table: daily_weather_table        
