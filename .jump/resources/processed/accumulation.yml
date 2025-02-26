@@ -1,18 +1,18 @@
+schema:
+  fields:
+    transaction_date:
+      type: timestamp[s]
+    daily_revenue:
+      type: double
+
 from_database:
   location: shyam_onboard
   sql:
     query : |
-            SELECT *
+            SELECT transaction_date, daily_revenue
             FROM daily_revenue_table     
 
-schema:
-  fields:
-    BusinessDate:
-      type: timestamp[s]
-    Sales:
-      type: double
-    Invoices:
-      type: int64
+
 
 to_database:
   location: shyam_onboard
