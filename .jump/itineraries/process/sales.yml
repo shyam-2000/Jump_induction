@@ -10,8 +10,8 @@ compute:
         sql:
           query: |
             SELECT 
-                first_value(transaction_date) AS transaction_date
-              , sum(daily_revenue) AS daily_revenue   
+                first_value(transaction_date) AS business_date
+              , sum(daily_revenue) AS sales   
             FROM "processed/accumulation:from_database"
                       
            

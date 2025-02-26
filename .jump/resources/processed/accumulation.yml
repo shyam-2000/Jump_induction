@@ -1,18 +1,17 @@
-schema:
-  fields:
-    transaction_date:
-      type: date64
-    daily_revenue:
-      type: double
 
 from_database:
   location: shyam_onboard
   sql:
     query : |
-            SELECT transaction_date, daily_revenue
+            SELECT *
             FROM daily_revenue_table     
 
-
+schema:
+  fields:
+    business_date:
+      type: date64
+    sales:
+      type: double
 
 to_database:
   location: shyam_onboard
