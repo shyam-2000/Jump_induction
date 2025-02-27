@@ -11,8 +11,8 @@ compute:
         sql:
            query: |
               SELECT transaction_date, daily_revenue
-              FROM  daily_revenue_table
-              RIGHT JOIN "meteo/weather:from_api_key"
+              FROM  "raw/orders:from_database"
+              LEFT JOIN "meteo/weather:from_api_key"
               ON "transaction_date" = "date"
 
 outputs:

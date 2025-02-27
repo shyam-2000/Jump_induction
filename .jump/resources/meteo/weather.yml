@@ -6,10 +6,10 @@ schema:
       type: str
 
 from_api_key:
-    location: shyam_onboard
-    api:
-      request:
-        path: "https://hitalk.free.beeceptor.com/meteo"
+  location: meteo
+  api:
+    request:
+      path: /meteo
       
 
 to_database:

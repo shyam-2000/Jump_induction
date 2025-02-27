@@ -2,3 +2,4 @@ raw/orders:
   to_database:
     itineraries:
       - process/sales
+      - meteo_api/meteo_impact
